@@ -14,36 +14,29 @@
       state: present
 
   - name: check new code
-	git:
+    git:
       repo: git@github.com:mylogin/hello.git
       dest: /home/code
 
   - name: compile
     shell: "mvn clean install -Djar.finalName=app.jar"
       register: mvn_result
-	when: after != before
+    when: after != before
 
   - name: stop myservice
-    systemd: 
-	  state=stoped 
-	  name=uberjar 
-	when: after != before
+    systemd: state=stoped name=uberjar 
+    when: after != before
   
   - name: copy to run directory
     copy:
       src: ~/home/code/app.jar
       dest: /home/app.jar
-	when: after != before
+    when: after != before
 
   - name: install myservice systemd unit file
-    template: 
-	  src=/tasks/uberjar.j2 
-	  dest=/etc/systemd/system/uberjar.service
-	when: after != before
+    template: src=/tasks/uberjar.j2 dest=/etc/systemd/system/uberjar.service
+    when: after != before
  
   - name: start myservice
-    systemd: 
-	  state=started 
-	  name=uberjar 
-	  daemon_reload=yes
-  	when: after != before
+    systemd: state=started name=uberjar daemon_reload=yes
+    when: after != before
