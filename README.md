@@ -1,7 +1,7 @@
 # AnsibleRecipes
 Collection of ansible recipes
 
-# Usage
+## Usage
 Fist of all install Ansible in CentOs:
 >sudo yum install ansible
 
@@ -9,7 +9,7 @@ Second install Git
 >sudo yum install git
 
 Maven and java are optional but always a friend
->sudo yum install maven
+>sudo yum install maven \
 >sudo yum install java-1.8.0-openjdk
 
 After that clone this repository
