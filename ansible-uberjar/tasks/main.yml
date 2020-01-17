@@ -37,7 +37,7 @@
 
   - name: install myservice systemd unit file
     template: 
-	  src=uberjar.j2 
+	  src=/tasks/uberjar.j2 
 	  dest=/etc/systemd/system/uberjar.service
 	when: after != before
  
