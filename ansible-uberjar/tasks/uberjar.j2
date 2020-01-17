@@ -1,0 +1,10 @@
+[Unit]
+Description=UberJar
+
+[Service]
+Restart=always
+ExecStart=/usr/bin/java -jar /home/app.jar
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target
