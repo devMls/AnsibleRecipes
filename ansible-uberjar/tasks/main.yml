@@ -40,3 +40,9 @@
   - name: start myservice
     systemd: state=started name=uberjar daemon_reload=yes
     when: after != before
+
+  - name: Schecudle ansible task to update code and continuous delivery
+    cron:
+      name: "continus delivery uberjar"
+      minute: "0,5,10,15,20,25,30,35,40,45,50,55"
+      job: "ansible-playbook --connection=local --inventory 127.0.0.1, /home/AnsibleRecipesansible-uberjar/tasks/main.yml"
