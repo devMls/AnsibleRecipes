@@ -17,6 +17,7 @@
     git:
       repo: git@github.com:mylogin/hello.git
       dest: /home/code
+      version: production
 
   - name: compile
     shell: "mvn clean install -Djar.finalName=app.jar"
